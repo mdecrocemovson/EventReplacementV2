@@ -4,13 +4,15 @@ import { Button } from "react-native-elements";
 import * as WebBrowser from "expo-web-browser";
 import RSVP from './components/rsvp';
 import Posts from './components/posts';
+import Responses from './components/responses';
 
 const styles = StyleSheet.create({
   paddedText: {
     padding: 15
   },
   container: {
-    padding: 20
+    backgroundColor: '#db7093',
+    padding: 50
   },
   title: {
     fontSize: 30,
@@ -57,6 +59,8 @@ export default function HomeScreen() {
         82 Landsdowne street, Boston, Mass 02215
       </Text>
 
+      <Responses />
+
       <Text style={styles.paddedText}>
         Time for a little over-due Union ReUnion. If you’re feeling nostalgic
         about the good old days on frat row and taking selfies by the Nott, come
@@ -67,9 +71,9 @@ export default function HomeScreen() {
         there! Your hosts, Olio, Shiraz, Nat & Jenna
       </Text>
 
-      <RSVP/>
-
       <Posts/>
+
+      <RSVP/>
     
     </ScrollView>
   );
