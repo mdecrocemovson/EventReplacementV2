@@ -51,7 +51,9 @@ const HomeScreen = ({navigation}) => {
       <Text style={styles.paddedText}>Your events!</Text>
       <Button 
         title="Go to next screen"
-        onPress={() => navigation.navigate('Event')}
+        onPress={() => navigation.navigate('Event', {
+          eventId: 12
+        })}
         />
     </ScrollView>
   )

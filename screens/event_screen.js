@@ -44,10 +44,32 @@ const styles = StyleSheet.create({
   }
 });
 
+const fetchEvents = () => {
+  fetch('http://localhost:5000/events', {
+    credentials: 'same-origin',
+    mode:'no-cors',
+    method: "get"
+  })
+  .then((response) => {
+    debugger
+    return response.json()
+  })
+  .then((data) => {
+    debugger
+    console.log(data);
+  })
+  .catch(function(error) {
+    debugger
+    console.log('Looks like there was a problem: \n', error);
+  });
+}
 
-const EventScreen = ({navigation}) => {
+const EventScreen = ({route, navigation}) => {
+  fetchEvents();
+  
   return (
     <ScrollView style={styles.container}>
+      <Text>{route.params.eventId}</Text>
       <Text style={styles.paddedText}>Sat, Feb 29th -- 4pm</Text>
       <Text style={styles.title}>Union ReUnion</Text>
       <Text style={styles.subtitle}>Game On Fenway</Text>
@@ -57,11 +79,12 @@ const EventScreen = ({navigation}) => {
       <Text style={styles.paddedText}>
         82 Landsdowne street, Boston, Mass 02215
       </Text>
-      <Button 
-        title="Go to next screen"
-        onPress={() => navigation.navigate('Next')}
-        />
 
+
+      <Button
+        title="Go back"
+        onPress={() => navigation.goBack()}
+        />
 
       <Responses />
 
@@ -78,11 +101,6 @@ const EventScreen = ({navigation}) => {
       <Posts/>
 
       <RSVP/>
-
-      <Button
-        title="Go back"
-        onPress={() => navigation.goBack()}
-        />
       
     
     </ScrollView>
