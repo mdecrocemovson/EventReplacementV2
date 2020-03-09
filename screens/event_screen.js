@@ -1,15 +1,22 @@
-import * as React from "react";
-import Responses from '../components/responses';
-import RSVP from '../components/rsvp';
-import Posts from '../components/posts';
-import { Platform, StyleSheet, Text, View, ScrollView, Button } from "react-native";
+import React, { useState } from "react";
+import Responses from "../components/responses";
+import RSVP from "../components/rsvp";
+import Posts from "../components/posts";
+import {
+  Platform,
+  StyleSheet,
+  Text,
+  View,
+  ScrollView,
+  Button
+} from "react-native";
 
 const styles = StyleSheet.create({
   paddedText: {
     padding: 15
   },
   container: {
-    backgroundColor: '#db7093',
+    backgroundColor: "#db7093",
     padding: 50
   },
   title: {
@@ -45,46 +52,74 @@ const styles = StyleSheet.create({
 });
 
 const fetchEvents = () => {
-  fetch('http://localhost:5000/events', {
-    credentials: 'same-origin',
-    mode:'no-cors',
-    method: "get"
+  fetch("http://localhost:3000/events", {
+    credentials: "same-origin"
   })
-  .then((response) => {
-    debugger
-    return response.json()
-  })
-  .then((data) => {
-    debugger
-    console.log(data);
-  })
-  .catch(function(error) {
-    debugger
-    console.log('Looks like there was a problem: \n', error);
-  });
-}
+    .then(response => {
+      if (response.ok) {
+        debugger;
+        return response;
+      }
+    })
+    .then(response => {
+      debugger;
+      return response.json();
+    })
+    .then(body => {
+      setDate(body[0].date);
+      setOwner(body[0].owner);
+    })
+    .catch(error => {
+      console.error("Error:", error);
+    });
+};
 
-const EventScreen = ({route, navigation}) => {
-  fetchEvents();
-  
+const removeDuplicates = nums => {
+  let newHash = {};
+  nums.forEach(element => {
+    if (Object.keys(newHash).length === 0) {
+      debugger;
+      newHash[element] = 1;
+    } else if (newHash[element] !== undefined) {
+      const nhElement = newHash[element];
+      newHash[element] = nhElement + 1;
+    } else if (newHash[element] === undefined) {
+      newHash[element] = 1;
+    }
+    debugger;
+  });
+  debugger
+  const keys = Object.keys(newHash);
+  const newKeys = keys.map((element => {
+    return parseInt(element);
+  }))
+  debugger
+  return newKeys.length;
+};
+
+const EventScreen = ({ route, navigation }) => {
+  const [date, setDate] = useState("");
+  const [owner, setOwner] = useState("");
+
+  // fetchEvents();
+  const answer = removeDuplicates([1, 1, 2]);
+
+  debugger;
+
   return (
     <ScrollView style={styles.container}>
       <Text>{route.params.eventId}</Text>
-      <Text style={styles.paddedText}>Sat, Feb 29th -- 4pm</Text>
+      <Text style={styles.paddedText}>{date}</Text>
       <Text style={styles.title}>Union ReUnion</Text>
       <Text style={styles.subtitle}>Game On Fenway</Text>
 
-      <Text style={styles.paddedText}>Private event by Jenna Grace</Text>
+      <Text style={styles.paddedText}>Private event by {owner}</Text>
       <Text style={styles.paddedText}>Game On Fenway</Text>
       <Text style={styles.paddedText}>
         82 Landsdowne street, Boston, Mass 02215
       </Text>
 
-
-      <Button
-        title="Go back"
-        onPress={() => navigation.goBack()}
-        />
+      <Button title="Go back" onPress={() => navigation.goBack()} />
 
       <Responses />
 
@@ -98,13 +133,11 @@ const EventScreen = ({route, navigation}) => {
         there! Your hosts, Olio, Shiraz, Nat & Jenna
       </Text>
 
-      <Posts/>
+      <Posts />
 
-      <RSVP/>
-      
-    
+      <RSVP />
     </ScrollView>
-  )
-}
+  );
+};
 
 export default EventScreen;

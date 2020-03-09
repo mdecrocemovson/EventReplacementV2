@@ -1,12 +1,10 @@
 require 'pry'
+
 class EventsController < ApplicationController
+
   def index
-    response.headers["Access-Control-Allow-Methods"] = "GET, PUT, POST, DELETE"
-    response.headers["Access-Control-Allow-Headers"] = "Content-Type, X-Requested-With, Accept"
-    binding.pry
-    events = Event.all
-    binding.pry
-    render json: events
+    @events = Event.all
+    render json: @events
   end
 
   def create
