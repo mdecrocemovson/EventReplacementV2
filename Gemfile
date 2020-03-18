@@ -5,7 +5,7 @@ ruby '2.3.3'
 
 gem 'pry-rails', :group => :development
 
-
+gem 'rack-cors'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.4', '>= 5.2.4.1'
 # Use sqlite3 as the database for Active Record

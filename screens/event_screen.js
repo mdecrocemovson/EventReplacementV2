@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Responses from "../components/responses";
 import RSVP from "../components/rsvp";
 import Posts from "../components/posts";
@@ -10,6 +10,7 @@ import {
   ScrollView,
   Button
 } from "react-native";
+import { fetchSpecificEvent } from "../components/event_services";
 
 const styles = StyleSheet.create({
   paddedText: {
@@ -27,82 +28,36 @@ const styles = StyleSheet.create({
     fontSize: 20,
     padding: 15
   },
-
-  tabBarInfoContainer: {
-    ...Platform.select({
-      ios: {
-        shadowColor: "black",
-        shadowOffset: { width: 0, height: -3 },
-        shadowOpacity: 0.1,
-        shadowRadius: 3
-      },
-      android: {
-        elevation: 20
-      }
-    }),
-    alignItems: "center",
-    backgroundColor: "#fbfbfb",
-    paddingVertical: 20
-  },
-  tabBarInfoText: {
-    fontSize: 17,
-    color: "rgba(96,100,109, 1)",
-    textAlign: "center"
-  }
 });
 
-const fetchEvents = () => {
-  fetch("http://localhost:3000/events", {
-    credentials: "same-origin"
-  })
-    .then(response => {
-      if (response.ok) {
-        debugger;
-        return response;
-      }
-    })
-    .then(response => {
-      debugger;
-      return response.json();
-    })
-    .then(body => {
-      setDate(body[0].date);
-      setOwner(body[0].owner);
-    })
-    .catch(error => {
-      console.error("Error:", error);
-    });
-};
 
-const removeDuplicates = nums => {
-  let newHash = {};
-  nums.forEach(element => {
-    if (Object.keys(newHash).length === 0) {
-      debugger;
-      newHash[element] = 1;
-    } else if (newHash[element] !== undefined) {
-      const nhElement = newHash[element];
-      newHash[element] = nhElement + 1;
-    } else if (newHash[element] === undefined) {
-      newHash[element] = 1;
-    }
-    debugger;
-  });
-  debugger
-  const keys = Object.keys(newHash);
-  const newKeys = keys.map((element => {
-    return parseInt(element);
-  }))
-  debugger
-  return newKeys.length;
-};
 
 const EventScreen = ({ route, navigation }) => {
   const [date, setDate] = useState("");
   const [owner, setOwner] = useState("");
 
-  // fetchEvents();
-  const answer = removeDuplicates([1, 1, 2]);
+  const handleFetchedEvent = () => {
+    fetchSpecificEvent(route.params.eventId)
+      .then(response => {
+        if (response.ok) {
+          return response;
+        }
+      })
+      .then(response => {
+        return response.json();
+      })
+      .then(body => {
+        setDate(body.date);
+        setOwner(body.owner);
+      })
+      .catch(error => {
+        console.error("Error:", error);
+      });
+  };
+
+  useEffect(() => {
+    handleFetchedEvent();
+  }, []);
 
   debugger;
 

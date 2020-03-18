@@ -1,15 +1,27 @@
-import * as React from "react";
-import Responses from '../components/responses';
-import RSVP from '../components/rsvp';
-import Posts from '../components/posts';
-import { Platform, StyleSheet, Text, View, ScrollView, Button } from "react-native";
+import React, { useState, useEffect } from "react";
+import Responses from "../components/responses";
+import RSVP from "../components/rsvp";
+import Posts from "../components/posts";
+import {
+  Platform,
+  StyleSheet,
+  Text,
+  View,
+  ScrollView,
+  Button
+} from "react-native";
+import { fetchAllEvents } from "../components/event_services";
+import {
+  FormLabel,
+  FormInput,
+  FormValidationMessage
+} from "react-native-elements";
 
 const styles = StyleSheet.create({
   paddedText: {
     padding: 15
   },
   container: {
-    backgroundColor: '#db7093',
     padding: 50
   },
   title: {
@@ -20,43 +32,64 @@ const styles = StyleSheet.create({
     fontSize: 20,
     padding: 15
   },
-
-  tabBarInfoContainer: {
-    ...Platform.select({
-      ios: {
-        shadowColor: "black",
-        shadowOffset: { width: 0, height: -3 },
-        shadowOpacity: 0.1,
-        shadowRadius: 3
-      },
-      android: {
-        elevation: 20
-      }
-    }),
-    alignItems: "center",
-    backgroundColor: "#fbfbfb",
-    paddingVertical: 20
-  },
-  tabBarInfoText: {
-    fontSize: 17,
-    color: "rgba(96,100,109, 1)",
-    textAlign: "center"
-  }
 });
 
+const HomeScreen = ({ navigation }) => {
+  const [events, setEvents] = useState([]);
+  const [date, setDate] = useState('');
 
-const HomeScreen = ({navigation}) => {
+  const handleFetchedEvents = () => {
+    fetchAllEvents()
+      .then(response => {
+        if (response.ok) {
+          debugger;
+          return response;
+        }
+      })
+      .then(response => {
+        debugger;
+        return response.json();
+      })
+      .then(body => {
+        debugger
+        setEvents(body);
+      })
+      .catch(error => {
+        console.error("Error:", error);
+      });
+  };
+
+  useEffect(() => {
+    handleFetchedEvents();
+  }, []);
+
   return (
     <ScrollView style={styles.container}>
       <Text style={styles.paddedText}>Your events!</Text>
       <Button 
-        title="Go to next screen"
-        onPress={() => navigation.navigate('Event', {
-          eventId: 12
-        })}
+        title={`Create a new event`}
+        onPress={() => 
+          navigation.navigate("CreateEvent")
+        }
         />
+      {events.map(event => {
+        return (
+          <View>
+            <Text>Date: {event.date}</Text>
+            <Text>Owner: {event.owner}</Text>
+            <Button
+              title={`Event number ${event.id}`}
+              onPress={() =>
+                navigation.navigate("Event", {
+                  eventId: event.id
+                })
+              }
+            />
+          </View>
+        );
+      })}
     </ScrollView>
-  )
-}
+  );
+};
 
 export default HomeScreen;
