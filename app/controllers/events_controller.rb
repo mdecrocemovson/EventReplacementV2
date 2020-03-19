@@ -17,6 +17,6 @@ class EventsController < ApplicationController
   end
 
   def event_params 
-    params.require(:event).permit(:date, :title, :owner)
+    params.require(:event).permit(:eventName, :eventOwner, :eventLocation, :eventDescription)
   end
 end

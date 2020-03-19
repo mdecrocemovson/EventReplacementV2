@@ -2072,3 +2072,347 @@ Completed 200 OK in 1149ms (Views: 2.5ms | ActiveRecord: 0.6ms)
   
 app/controllers/events_controller.rb:20:in `event_params'
 app/controllers/events_controller.rb:11:in `create'
+Started POST "/events" for ::1 at 2020-03-19 17:35:48 -0400
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/jdmovson/.gem/ruby/2.3.3/gems/activerecord-5.2.4.1/lib/active_record/log_subscriber.rb:98
+Processing by EventsController#create as */*
+Completed 400 Bad Request in 13711ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: event):
+  
+app/controllers/events_controller.rb:20:in `event_params'
+app/controllers/events_controller.rb:11:in `create'
+Started POST "/events" for ::1 at 2020-03-19 17:36:28 -0400
+Processing by EventsController#create as */*
+Completed 400 Bad Request in 5288ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: event):
+  
+app/controllers/events_controller.rb:20:in `event_params'
+app/controllers/events_controller.rb:11:in `create'
+Started GET "/events" for ::1 at 2020-03-19 17:41:36 -0400
+Processing by EventsController#index as */*
+  [1m[36mEvent Load (8.6ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/controllers/events_controller.rb:6
+Completed 200 OK in 55ms (Views: 29.3ms | ActiveRecord: 10.9ms)
+
+
+Started GET "/events" for ::1 at 2020-03-19 17:41:45 -0400
+Processing by EventsController#index as */*
+  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/controllers/events_controller.rb:6
+Completed 200 OK in 3ms (Views: 2.6ms | ActiveRecord: 0.2ms)
+
+
+Started POST "/events" for ::1 at 2020-03-19 17:42:21 -0400
+Processing by EventsController#create as */*
+Started GET "/events" for ::1 at 2020-03-19 17:43:14 -0400
+Processing by EventsController#index as */*
+  [1m[36mEvent Load (0.5ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/controllers/events_controller.rb:6
+Completed 200 OK in 2ms (Views: 0.9ms | ActiveRecord: 0.5ms)
+
+
+Completed 400 Bad Request in 57765ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: event):
+  
+app/controllers/events_controller.rb:20:in `event_params'
+app/controllers/events_controller.rb:11:in `create'
+Started POST "/events" for ::1 at 2020-03-19 17:43:50 -0400
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/jdmovson/.gem/ruby/2.3.3/gems/activerecord-5.2.4.1/lib/active_record/log_subscriber.rb:98
+Processing by EventsController#create as */*
+Started GET "/events" for ::1 at 2020-03-19 17:44:01 -0400
+Processing by EventsController#index as */*
+  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/controllers/events_controller.rb:6
+Completed 400 Bad Request in 92739ms (ActiveRecord: 0.0ms)
+
+
+Started POST "/events" for ::1 at 2020-03-19 17:45:23 -0400
+Started POST "/events" for ::1 at 2020-03-19 17:45:23 -0400
+Completed 200 OK in 82073ms (Views: 2.7ms | ActiveRecord: 0.5ms)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: event):
+  
+app/controllers/events_controller.rb:20:in `event_params'
+app/controllers/events_controller.rb:11:in `create'
+Processing by EventsController#create as */*
+Processing by EventsController#create as */*
+Completed 204 No Content in 1861ms (ActiveRecord: 0.0ms)
+
+
+Completed 204 No Content in 3940ms (ActiveRecord: 0.0ms)
+
+
+Started POST "/events" for ::1 at 2020-03-19 17:45:39 -0400
+Processing by EventsController#create as */*
+Completed 204 No Content in 8490ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/events" for ::1 at 2020-03-19 17:48:00 -0400
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/jdmovson/.gem/ruby/2.3.3/gems/activerecord-5.2.4.1/lib/active_record/log_subscriber.rb:98
+Processing by EventsController#index as */*
+  [1m[36mEvent Load (0.3ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/controllers/events_controller.rb:6
+Completed 200 OK in 9ms (Views: 4.1ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/events" for ::1 at 2020-03-19 17:48:18 -0400
+Processing by EventsController#index as */*
+  [1m[36mEvent Load (0.1ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/controllers/events_controller.rb:6
+Completed 200 OK in 1ms (Views: 0.5ms | ActiveRecord: 0.1ms)
+
+
+Started POST "/events" for ::1 at 2020-03-19 17:48:58 -0400
+Processing by EventsController#create as */*
+Completed 400 Bad Request in 0ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: event):
+  
+app/controllers/events_controller.rb:19:in `event_params'
+app/controllers/events_controller.rb:10:in `create'
+Started POST "/events" for ::1 at 2020-03-19 17:49:41 -0400
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/jdmovson/.gem/ruby/2.3.3/gems/activerecord-5.2.4.1/lib/active_record/log_subscriber.rb:98
+Processing by EventsController#create as */*
+Completed 400 Bad Request in 3ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: event):
+  
+app/controllers/events_controller.rb:19:in `event_params'
+app/controllers/events_controller.rb:10:in `create'
+Started POST "/events" for ::1 at 2020-03-19 17:49:55 -0400
+Processing by EventsController#create as */*
+Completed 400 Bad Request in 6847ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: event):
+  
+app/controllers/events_controller.rb:20:in `event_params'
+app/controllers/events_controller.rb:11:in `create'
+Started GET "/events" for ::1 at 2020-03-19 17:50:34 -0400
+Processing by EventsController#index as */*
+  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/controllers/events_controller.rb:6
+Completed 200 OK in 11ms (Views: 6.8ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/events" for ::1 at 2020-03-19 17:50:49 -0400
+Processing by EventsController#index as */*
+  [1m[36mEvent Load (0.1ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/controllers/events_controller.rb:6
+Completed 200 OK in 3ms (Views: 1.0ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/events" for ::1 at 2020-03-19 17:50:51 -0400
+Processing by EventsController#index as */*
+  [1m[36mEvent Load (0.1ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/controllers/events_controller.rb:6
+Completed 200 OK in 1ms (Views: 0.8ms | ActiveRecord: 0.1ms)
+
+
+Started POST "/events" for ::1 at 2020-03-19 17:50:59 -0400
+Processing by EventsController#create as */*
+Started GET "/events" for ::1 at 2020-03-19 17:51:28 -0400
+Processing by EventsController#index as */*
+  [1m[36mEvent Load (0.5ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/controllers/events_controller.rb:6
+Completed 200 OK in 1ms (Views: 0.6ms | ActiveRecord: 0.5ms)
+
+
+Started POST "/events" for ::1 at 2020-03-19 17:51:41 -0400
+Processing by EventsController#create as */*
+Started GET "/events" for ::1 at 2020-03-19 17:51:55 -0400
+Processing by EventsController#index as */*
+  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/controllers/events_controller.rb:6
+Completed 200 OK in 1ms (Views: 1.0ms | ActiveRecord: 0.2ms)
+
+
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/events_controller.rb:11
+  [1m[36mEvent Create (16.8ms)[0m  [1m[32mINSERT INTO "events" ("created_at", "updated_at") VALUES (?, ?)[0m  [["created_at", "2020-03-19 21:51:59.833997"], ["updated_at", "2020-03-19 21:51:59.833997"]]
+  ↳ app/controllers/events_controller.rb:11
+  [1m[35m (1.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/events_controller.rb:11
+Completed 204 No Content in 18191ms (ActiveRecord: 19.1ms)
+
+
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/events_controller.rb:11
+  [1m[36mEvent Create (0.6ms)[0m  [1m[32mINSERT INTO "events" ("created_at", "updated_at") VALUES (?, ?)[0m  [["created_at", "2020-03-19 21:52:09.712182"], ["updated_at", "2020-03-19 21:52:09.712182"]]
+  ↳ app/controllers/events_controller.rb:11
+  [1m[35m (6.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/events_controller.rb:11
+Completed 204 No Content in 70308ms (ActiveRecord: 7.4ms)
+
+
+Started POST "/events" for ::1 at 2020-03-19 17:52:45 -0400
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/jdmovson/.gem/ruby/2.3.3/gems/activerecord-5.2.4.1/lib/active_record/log_subscriber.rb:98
+Processing by EventsController#create as */*
+Started GET "/events" for ::1 at 2020-03-19 17:52:46 -0400
+Processing by EventsController#index as */*
+Started GET "/events" for ::1 at 2020-03-19 17:55:30 -0400
+  [1m[35m (4.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/jdmovson/.gem/ruby/2.3.3/gems/activerecord-5.2.4.1/lib/active_record/log_subscriber.rb:98
+  
+SyntaxError (/Users/jdmovson/Desktop/projects/EventReplacementV2/app/controllers/events_controller.rb:20: syntax error, unexpected ':', expecting ')'
+...ermit(:eventName, :eventOwner :eventLocation, :eventDescript...
+...                               ^
+/Users/jdmovson/Desktop/projects/EventReplacementV2/app/controllers/events_controller.rb:20: syntax error, unexpected ')', expecting &. or :: or '[' or '.'):
+  
+app/controllers/events_controller.rb:20: syntax error, unexpected ':', expecting ')'
+app/controllers/events_controller.rb:20: syntax error, unexpected ')', expecting &. or :: or '[' or '.'
+Started GET "/events" for ::1 at 2020-03-19 17:56:26 -0400
+Processing by EventsController#index as */*
+  [1m[36mEvent Load (0.3ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/controllers/events_controller.rb:6
+Completed 200 OK in 23ms (Views: 18.0ms | ActiveRecord: 1.1ms)
+
+
+Started POST "/events" for ::1 at 2020-03-19 17:56:50 -0400
+Processing by EventsController#create as */*
+Completed 400 Bad Request in 512972ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: event):
+  
+app/controllers/events_controller.rb:20:in `event_params'
+app/controllers/events_controller.rb:11:in `create'
+Started GET "/events" for ::1 at 2020-03-19 18:06:10 -0400
+Processing by EventsController#index as */*
+  [1m[36mEvent Load (0.5ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/controllers/events_controller.rb:6
+Completed 200 OK in 11ms (Views: 10.4ms | ActiveRecord: 0.5ms)
+
+
+Started POST "/events" for ::1 at 2020-03-19 18:06:17 -0400
+Processing by EventsController#create as */*
+Completed 400 Bad Request in 649722ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: event):
+  
+app/controllers/events_controller.rb:20:in `event_params'
+app/controllers/events_controller.rb:11:in `create'
+Started POST "/events" for ::1 at 2020-03-19 18:17:13 -0400
+Processing by EventsController#create as */*
+Completed 400 Bad Request in 4934ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: event):
+  
+app/controllers/events_controller.rb:20:in `event_params'
+app/controllers/events_controller.rb:11:in `create'
+Started GET "/events" for ::1 at 2020-03-19 18:22:50 -0400
+Processing by EventsController#index as */*
+  [1m[36mEvent Load (1.2ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/controllers/events_controller.rb:6
+Completed 200 OK in 30ms (Views: 26.0ms | ActiveRecord: 1.2ms)
+
+
+Started POST "/events" for ::1 at 2020-03-19 18:22:58 -0400
+Processing by EventsController#create as */*
+  Parameters: {"event"=>{"eventName"=>"sdf", "eventOwner"=>"sdf", "eventLocation"=>"sdf", "eventDescription"=>"sdf"}}
+Completed 500 Internal Server Error in 15209ms (ActiveRecord: 0.0ms)
+
+
+  
+ActiveModel::UnknownAttributeError (unknown attribute 'eventName' for Event.):
+  
+app/controllers/events_controller.rb:11:in `create'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/jdmovson/.gem/ruby/2.3.3/bin/rake:22
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  ↳ /Users/jdmovson/.gem/ruby/2.3.3/bin/rake:22
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/jdmovson/.gem/ruby/2.3.3/bin/rake:22
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  ↳ /Users/jdmovson/.gem/ruby/2.3.3/bin/rake:22
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/jdmovson/.gem/ruby/2.3.3/bin/rake:22
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  ↳ /Users/jdmovson/.gem/ruby/2.3.3/bin/rake:22
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ /Users/jdmovson/.gem/ruby/2.3.3/bin/rake:22
+  [1m[35m (3.3ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  ↳ /Users/jdmovson/.gem/ruby/2.3.3/bin/rake:22
+  [1m[35m (1.3ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ /Users/jdmovson/.gem/ruby/2.3.3/bin/rake:22
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/jdmovson/.gem/ruby/2.3.3/bin/rake:22
+Migrating to CreateEvents (20200305152725)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ /Users/jdmovson/.gem/ruby/2.3.3/bin/rake:22
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE TABLE "events" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "eventDate" varchar, "eventName" varchar, "eventOwner" varchar, "eventLocation" varchar, "eventDescription" text, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/migrate/20200305152725_create_events.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20200305152725"]]
+  ↳ /Users/jdmovson/.gem/ruby/2.3.3/bin/rake:22
+  [1m[35m (1.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ /Users/jdmovson/.gem/ruby/2.3.3/bin/rake:22
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ /Users/jdmovson/.gem/ruby/2.3.3/bin/rake:22
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ /Users/jdmovson/.gem/ruby/2.3.3/bin/rake:22
+  [1m[36mActiveRecord::InternalMetadata Create (0.3ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2020-03-19 22:24:20.063825"], ["updated_at", "2020-03-19 22:24:20.063825"]]
+  ↳ /Users/jdmovson/.gem/ruby/2.3.3/bin/rake:22
+  [1m[35m (0.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ /Users/jdmovson/.gem/ruby/2.3.3/bin/rake:22
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/jdmovson/.gem/ruby/2.3.3/bin/rake:22
+Started GET "/events" for ::1 at 2020-03-19 18:24:23 -0400
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/jdmovson/.gem/ruby/2.3.3/gems/activerecord-5.2.4.1/lib/active_record/log_subscriber.rb:98
+Processing by EventsController#index as */*
+  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/controllers/events_controller.rb:6
+Completed 200 OK in 7ms (Views: 2.5ms | ActiveRecord: 0.7ms)
+
+
+Started POST "/events" for ::1 at 2020-03-19 18:24:30 -0400
+Processing by EventsController#create as */*
+  Parameters: {"event"=>{"eventName"=>"sdfsd", "eventOwner"=>"eeee", "eventLocation"=>"werwer", "eventDescription"=>"eeeee"}}
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/events_controller.rb:11
+  [1m[36mEvent Create (0.5ms)[0m  [1m[32mINSERT INTO "events" ("eventName", "eventOwner", "eventLocation", "eventDescription", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["eventName", "sdfsd"], ["eventOwner", "eeee"], ["eventLocation", "werwer"], ["eventDescription", "eeeee"], ["created_at", "2020-03-19 22:24:38.706869"], ["updated_at", "2020-03-19 22:24:38.706869"]]
+  ↳ app/controllers/events_controller.rb:11
+  [1m[35m (6.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/events_controller.rb:11
+Completed 204 No Content in 8441ms (ActiveRecord: 6.9ms)
+
+
+Started GET "/events" for ::1 at 2020-03-19 18:24:45 -0400
+Processing by EventsController#index as */*
+  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/controllers/events_controller.rb:6
+Completed 200 OK in 3ms (Views: 2.8ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/events" for ::1 at 2020-03-19 18:25:00 -0400
+Processing by EventsController#index as */*
+  [1m[36mEvent Load (0.1ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/controllers/events_controller.rb:6
+Completed 200 OK in 2ms (Views: 1.7ms | ActiveRecord: 0.1ms)
+
+

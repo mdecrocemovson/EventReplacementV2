@@ -24,18 +24,20 @@ const CreateEventScreen = () => {
   const onSubmit = () => {
     console.log("onsubmit");
   };
+  const [eventName, setEventName] = useState('');
+  const [eventOwner, setEventOwner] = useState('');
+  const [eventLocation, setLocation] = useState('');
+  const [eventDescription, setDescription] = useState('');
 
   const handleSubmit = payload => {
     event.preventDefault();
     createEvent(payload)
     .then(response => {
       if(response.ok) {
-        debugger;
         return response;
       }
     })
     .then(response => {
-      debugger;
       return response.json();
     })
     .then(body => {
@@ -52,6 +54,7 @@ const CreateEventScreen = () => {
         type="text"
         placeholder="Enter the name of the event"
         name="Event name"
+        onChangeText={(text) => setEventName(text)}
         ref={register({ required: true, maxLength: 80 })}
       />
       <TextInput
@@ -59,6 +62,7 @@ const CreateEventScreen = () => {
         type="text"
         placeholder="First name"
         name="First name"
+        onChangeText={(text) => setEventOwner(text)}
         ref={register({ required: true, maxLength: 80 })}
       />
       <TextInput
@@ -66,6 +70,7 @@ const CreateEventScreen = () => {
         type="text"
         placeholder="Give a place for the event"
         name="location"
+        onChangeText={(text) => setLocation(text)}
         ref={register({ required: true, maxLength: 80 })}
       />
       <TextInput
@@ -73,9 +78,10 @@ const CreateEventScreen = () => {
         type="text"
         placeholder="Enter a description"
         name="description"
+        onChangeText={(text) => setDescription(text)}
         ref={register({ required: true, maxLength: 80 })}
       />
-      <Button title='Submit' onPress={() => handleSubmit({error: ''})}/>
+      <Button title='Submit' onPress={() => handleSubmit({event: {eventName, eventOwner, eventLocation, eventDescription}})}/>
     </View>
   );
 };

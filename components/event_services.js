@@ -17,10 +17,12 @@ export const fetchSpecificEvent = id => {
 };
 
 export const createEvent = payload => {
+  debugger
   return fetch('http://localhost:3000/events', {
     credentials: "same-origin",
     headers: {
-      "Access-Control-Allow-Origin": "*"
+      "Access-Control-Allow-Origin": "*",
+      'Content-Type': 'application/json'
     },
     method: "post",
     body: JSON.stringify(payload)

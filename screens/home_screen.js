@@ -42,22 +42,20 @@ const HomeScreen = ({ navigation }) => {
     fetchAllEvents()
       .then(response => {
         if (response.ok) {
-          debugger;
           return response;
         }
       })
       .then(response => {
-        debugger;
         return response.json();
       })
       .then(body => {
-        debugger
         setEvents(body);
       })
       .catch(error => {
         console.error("Error:", error);
       });
   };
+
 
   useEffect(() => {
     handleFetchedEvents();
@@ -75,8 +73,8 @@ const HomeScreen = ({ navigation }) => {
       {events.map(event => {
         return (
           <View>
-            <Text>Date: {event.date}</Text>
-            <Text>Owner: {event.owner}</Text>
+            <Text>Date: {event.eventDate}</Text>
+            <Text>Owner: {event.eventOwner}</Text>
             <Button
               title={`Event number ${event.id}`}
               onPress={() =>
