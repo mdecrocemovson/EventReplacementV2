@@ -5,9 +5,9 @@ import {
   FormValidationMessage,
   Button
 } from "react-native-elements";
-import { View, Form, TextInput, StyleSheet } from "react-native";
+import { View, Form, TextInput, StyleSheet, Alert } from "react-native";
 import { useForm } from "react-hook-form";
-import { createEvent } from '../components/event_services';
+import { createEvent } from "../components/event_services";
 
 const styles = StyleSheet.create({
   formContainer: {
@@ -19,34 +19,39 @@ const styles = StyleSheet.create({
   }
 });
 
-const CreateEventScreen = () => {
+const CreateEventScreen = ({navigation}) => {
   const { register } = useForm();
-  const onSubmit = () => {
-    console.log("onsubmit");
-  };
-  const [eventName, setEventName] = useState('');
-  const [eventOwner, setEventOwner] = useState('');
-  const [eventLocation, setLocation] = useState('');
-  const [eventDescription, setDescription] = useState('');
+  const [showAlert, setShowAlert] = useState(false);
+  const [eventName, setEventName] = useState("");
+  const [eventOwner, setEventOwner] = useState("");
+  const [eventLocation, setLocation] = useState("");
+  const [eventDescription, setDescription] = useState("");
 
   const handleSubmit = payload => {
     event.preventDefault();
     createEvent(payload)
-    .then(response => {
-      if(response.ok) {
-        return response;
-      }
-    })
-    .then(response => {
-      return response.json();
-    })
-    .then(body => {
-      debugger;
-    })
-    .catch(error => {
-      console.error("error: ", error);
-    });
-  }
+      .then(response => {
+        debugger
+        if (response.ok) {
+          return response;
+        }
+      })
+      .then(response => {
+        debugger
+        return response.json();
+      })
+      .then(body => {
+        debugger
+        navigation.navigate("Event", {
+          eventId: body.id
+        })
+        debugger
+        console.log('did this get here?');
+      })
+      .catch(error => {
+        console.error("error: ", error);
+      });
+  };
   return (
     <View style={styles.formContainer}>
       <TextInput
@@ -54,7 +59,7 @@ const CreateEventScreen = () => {
         type="text"
         placeholder="Enter the name of the event"
         name="Event name"
-        onChangeText={(text) => setEventName(text)}
+        onChangeText={text => setEventName(text)}
         ref={register({ required: true, maxLength: 80 })}
       />
       <TextInput
@@ -62,7 +67,7 @@ const CreateEventScreen = () => {
         type="text"
         placeholder="First name"
         name="First name"
-        onChangeText={(text) => setEventOwner(text)}
+        onChangeText={text => setEventOwner(text)}
         ref={register({ required: true, maxLength: 80 })}
       />
       <TextInput
@@ -70,7 +75,7 @@ const CreateEventScreen = () => {
         type="text"
         placeholder="Give a place for the event"
         name="location"
-        onChangeText={(text) => setLocation(text)}
+        onChangeText={text => setLocation(text)}
         ref={register({ required: true, maxLength: 80 })}
       />
       <TextInput
@@ -78,10 +83,17 @@ const CreateEventScreen = () => {
         type="text"
         placeholder="Enter a description"
         name="description"
-        onChangeText={(text) => setDescription(text)}
+        onChangeText={text => setDescription(text)}
         ref={register({ required: true, maxLength: 80 })}
       />
-      <Button title='Submit' onPress={() => handleSubmit({event: {eventName, eventOwner, eventLocation, eventDescription}})}/>
+      <Button
+        title="Submit"
+        onPress={() =>
+          handleSubmit({
+            event: { eventName, eventOwner, eventLocation, eventDescription }
+          })
+        }
+      />
     </View>
   );
 };
