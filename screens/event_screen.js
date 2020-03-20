@@ -11,6 +11,7 @@ import {
   Button
 } from "react-native";
 import { fetchSpecificEvent } from "../components/event_services";
+import { setWorldAlignment } from "expo/build/AR";
 
 const styles = StyleSheet.create({
   paddedText: {
@@ -33,8 +34,12 @@ const styles = StyleSheet.create({
 
 
 const EventScreen = ({ route, navigation }) => {
-  const [date, setDate] = useState("");
-  const [owner, setOwner] = useState("");
+  debugger
+  const [eventDate, setEventDate] = useState('');
+  const [eventOwner, setEventOwner] = useState('');
+  const [eventName, setEventName] = useState('');
+  const [eventDescription, setEventDescription] = useState('');
+  const [eventLocation, setEventLocation] = useState('');
 
   const handleFetchedEvent = () => {
     fetchSpecificEvent(route.params.eventId)
@@ -47,8 +52,12 @@ const EventScreen = ({ route, navigation }) => {
         return response.json();
       })
       .then(body => {
-        setDate(body.date);
-        setOwner(body.owner);
+        debugger
+        setEventName(body.eventName);
+        setEventDate(body.eventDate);
+        setEventOwner(body.eventOwner);
+        setEventLocation(body.eventLocation);
+        setEventDescription(body.eventDescription);
       })
       .catch(error => {
         console.error("Error:", error);
@@ -64,12 +73,12 @@ const EventScreen = ({ route, navigation }) => {
   return (
     <ScrollView style={styles.container}>
       <Text>{route.params.eventId}</Text>
-      <Text style={styles.paddedText}>{date}</Text>
+      <Text style={styles.paddedText}>{eventDate}</Text>
       <Text style={styles.title}>Union ReUnion</Text>
       <Text style={styles.subtitle}>Game On Fenway</Text>
 
-      <Text style={styles.paddedText}>Private event by {owner}</Text>
-      <Text style={styles.paddedText}>Game On Fenway</Text>
+      <Text style={styles.paddedText}>Private event hosted by {eventOwner}</Text>
+      <Text style={styles.paddedText}>Location: {eventLocation}</Text>
       <Text style={styles.paddedText}>
         82 Landsdowne street, Boston, Mass 02215
       </Text>
