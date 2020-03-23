@@ -66,6 +66,7 @@ const HomeScreen = ({ navigation }) => {
       {events.map(event => {
         return (
           <View>
+            <Text style={styles.paddedText}>Title: {event.eventName}</Text>
             <Text style={styles.paddedText}>Date: {event.eventDate}</Text>
             <Text style={styles.paddedText}>Owner: {event.eventOwner}</Text>
             <Text style={styles.paddedText}>

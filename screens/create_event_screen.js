@@ -5,9 +5,10 @@ import {
   FormValidationMessage,
   Button
 } from "react-native-elements";
-import { View, Form, TextInput, StyleSheet, Alert } from "react-native";
+import { View, Form, TextInput, StyleSheet, Input, Alert } from "react-native";
 import { useForm } from "react-hook-form";
 import { createEvent } from "../components/event_services";
+import DateTimePicker from "@react-native-community/datetimepicker";
 
 const styles = StyleSheet.create({
   formContainer: {
@@ -19,34 +20,35 @@ const styles = StyleSheet.create({
   }
 });
 
-const CreateEventScreen = ({navigation}) => {
+const CreateEventScreen = ({ navigation }) => {
   const { register } = useForm();
   const [showAlert, setShowAlert] = useState(false);
   const [eventName, setEventName] = useState("");
   const [eventOwner, setEventOwner] = useState("");
   const [eventLocation, setLocation] = useState("");
   const [eventDescription, setDescription] = useState("");
+  const [date, setDate] = useState(new Date(1598051730000));
+  const [mode, setMode] = useState("date");
 
   const handleSubmit = payload => {
-    event.preventDefault();
     createEvent(payload)
       .then(response => {
-        debugger
+        debugger;
         if (response.ok) {
           return response;
         }
       })
       .then(response => {
-        debugger
+        debugger;
         return response.json();
       })
       .then(body => {
-        debugger
+        debugger;
         navigation.navigate("Event", {
           eventId: body.id
-        })
-        debugger
-        console.log('did this get here?');
+        });
+        debugger;
+        console.log("did this get here?");
       })
       .catch(error => {
         console.error("error: ", error);
@@ -86,11 +88,23 @@ const CreateEventScreen = ({navigation}) => {
         onChangeText={text => setDescription(text)}
         ref={register({ required: true, maxLength: 80 })}
       />
+      {Platform.OS === "android" ||
+        (Platform.OS === "ios" && (
+          <DateTimePicker
+            testID="dateTimePicker"
+            timeZoneOffsetInMinutes={0}
+            value={date}
+            mode={mode}
+            onChange={(selectedDate) => setDate(selectedDate)}
+            is24Hour={true}
+            display="default"
+          />
+        ))}
       <Button
         title="Submit"
         onPress={() =>
           handleSubmit({
-            event: { eventName, eventOwner, eventLocation, eventDescription }
+            event: { eventName, eventDate, eventOwner, eventLocation, eventDescription }
           })
         }
       />
