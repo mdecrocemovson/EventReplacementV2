@@ -27,8 +27,13 @@ const CreateEventScreen = ({ navigation }) => {
   const [eventOwner, setEventOwner] = useState("");
   const [eventLocation, setLocation] = useState("");
   const [eventDescription, setDescription] = useState("");
-  const [date, setDate] = useState(new Date(1598051730000));
+  const [eventDate, setEventDate] = useState(new Date(1598051730000));
   const [mode, setMode] = useState("date");
+
+  const onChangeDate = (event, selectedDate) => {
+    const currentDate = selectedDate || eventDate;
+    setEventDate(currentDate);
+  };
 
   const handleSubmit = payload => {
     createEvent(payload)
@@ -93,9 +98,9 @@ const CreateEventScreen = ({ navigation }) => {
           <DateTimePicker
             testID="dateTimePicker"
             timeZoneOffsetInMinutes={0}
-            value={date}
+            value={eventDate}
             mode={mode}
-            onChange={(selectedDate) => setDate(selectedDate)}
+            onChange={onChangeDate}
             is24Hour={true}
             display="default"
           />
