@@ -17,6 +17,7 @@ ActiveRecord::Schema.define(version: 2020_03_05_152725) do
     t.string "eventName"
     t.string "eventOwner"
     t.string "eventLocation"
+    t.string "eventCoverImage"
     t.text "eventDescription"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

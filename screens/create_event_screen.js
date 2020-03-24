@@ -1,6 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { Button } from "react-native-elements";
-import { View, TextInput, StyleSheet, Platform, Image } from "react-native";
+import {
+  View,
+  ScrollView,
+  TextInput,
+  StyleSheet,
+  Platform,
+  Image
+} from "react-native";
 import { useForm } from "react-hook-form";
 import { createEvent } from "../components/event_services";
 import DateTimePicker from "@react-native-community/datetimepicker";
@@ -11,7 +18,8 @@ import * as Permissions from "expo-permissions";
 const styles = StyleSheet.create({
   formContainer: {
     flex: 1,
-    flexDirection: "column"
+    flexDirection: "column",
+    padding: 50
   },
   input: {
     padding: 20
@@ -19,6 +27,16 @@ const styles = StyleSheet.create({
   image: {
     height: 300,
     width: 300
+  },
+  imageContainer: {
+    flex: 1,
+    textAlign: "center",
+    justifyContent: "center",
+    padding: 20
+  },
+  button: {
+    width: 200,
+    justifyContent: "center"
   }
 });
 
@@ -39,7 +57,7 @@ const CreateEventScreen = ({ navigation }) => {
   };
 
   const handleSubmit = payload => {
-    debugger
+    debugger;
     createEvent(payload)
       .then(response => {
         debugger;
@@ -79,10 +97,10 @@ const CreateEventScreen = ({ navigation }) => {
       setEventCoverImage(result.uri);
     }
   };
-  const doesImageExist = eventCoverImage !== null && eventCoverImage !== '';
+  const doesImageExist = eventCoverImage !== null && eventCoverImage !== "";
   debugger;
   return (
-    <View style={styles.formContainer}>
+    <ScrollView style={styles.formContainer}>
       <TextInput
         style={styles.input}
         type="text"
@@ -127,9 +145,18 @@ const CreateEventScreen = ({ navigation }) => {
             display="default"
           />
         ))}
-      <Button title="Add Cover Image" onPress={() => pickImage()} />
-      {doesImageExist && <Image style={styles.image} source={{ uri: eventCoverImage}} />}
       <Button
+        style={styles.button}
+        title="Add Cover Image"
+        onPress={() => pickImage()}
+      />
+      {doesImageExist && (
+        <View style={styles.imageContainer}>
+          <Image style={styles.image} source={{ uri: eventCoverImage }} />
+        </View>
+      )}
+      <Button
+        style={styles.button}
         title="Submit"
         onPress={() =>
           handleSubmit({
@@ -144,7 +171,7 @@ const CreateEventScreen = ({ navigation }) => {
           })
         }
       />
-    </View>
+    </ScrollView>
   );
 };
 
