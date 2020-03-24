@@ -73,12 +73,10 @@ const EventScreen = ({ route, navigation }) => {
       <Text>{route.params.eventId}</Text>
       <Text style={styles.paddedText}>{eventDate}</Text>
       <Text style={styles.title}>{eventName}</Text>
-      <Text style={styles.subtitle}>Game On Fenway</Text>
       <Text style={styles.paddedText}>
         Private event hosted by {eventOwner}
       </Text>
       <Text style={styles.paddedText}>Location: {eventLocation}</Text>
-      <Button title="Go back" onPress={() => navigation.goBack()} />
       <Responses />
       <Text style={styles.paddedText}>{eventDescription}</Text>
       <Posts />

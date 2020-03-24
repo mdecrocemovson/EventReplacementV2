@@ -1,14 +1,12 @@
 import React, { useState, useEffect } from "react";
-import {
-  FormLabel,
-  FormInput,
-  FormValidationMessage,
-  Button
-} from "react-native-elements";
-import { View, Form, TextInput, StyleSheet, Input, Alert } from "react-native";
+import { Button } from "react-native-elements";
+import { View, TextInput, StyleSheet, Platform, Image } from "react-native";
 import { useForm } from "react-hook-form";
 import { createEvent } from "../components/event_services";
 import DateTimePicker from "@react-native-community/datetimepicker";
+import * as ImagePicker from "expo-image-picker";
+import Constants from "expo-constants";
+import * as Permissions from "expo-permissions";
 
 const styles = StyleSheet.create({
   formContainer: {
@@ -17,6 +15,10 @@ const styles = StyleSheet.create({
   },
   input: {
     padding: 20
+  },
+  image: {
+    height: 300,
+    width: 300
   }
 });
 
@@ -27,6 +29,7 @@ const CreateEventScreen = ({ navigation }) => {
   const [eventOwner, setEventOwner] = useState("");
   const [eventLocation, setLocation] = useState("");
   const [eventDescription, setDescription] = useState("");
+  const [eventCoverImage, setEventCoverImage] = useState("");
   const [eventDate, setEventDate] = useState(new Date(1598051730000));
   const [mode, setMode] = useState("date");
 
@@ -59,6 +62,25 @@ const CreateEventScreen = ({ navigation }) => {
         console.error("error: ", error);
       });
   };
+
+  const pickImage = async () => {
+    // What is going on rgiht here
+    let result = await ImagePicker.launchImageLibraryAsync({
+      mediaTypes: ImagePicker.MediaTypeOptions.All,
+      allowsEditing: true,
+      aspect: [4, 3],
+      quality: 1
+    });
+
+    console.log(result);
+
+    if (!result.cancelled) {
+      debugger
+      setEventCoverImage(result.uri);
+    }
+  };
+  const doesImageExist = eventCoverImage !== null && eventCoverImage !== '';
+  debugger;
   return (
     <View style={styles.formContainer}>
       <TextInput
@@ -105,11 +127,20 @@ const CreateEventScreen = ({ navigation }) => {
             display="default"
           />
         ))}
+      <Button title="Add Cover Image" onPress={() => pickImage()} />
+      {doesImageExist && <Image style={styles.image} source={{ uri: eventCoverImage}} />}
       <Button
         title="Submit"
         onPress={() =>
           handleSubmit({
-            event: { eventName, eventDate, eventOwner, eventLocation, eventDescription }
+            event: {
+              eventName,
+              eventDate,
+              eventOwner,
+              eventLocation,
+              eventDescription,
+              eventCoverImage
+            }
           })
         }
       />

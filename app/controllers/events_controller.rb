@@ -2,7 +2,7 @@ require 'pry'
 
 class EventsController < ApplicationController
   def index
-    @events = Event.all
+    @events = Event.order('eventDate DESC')
     render json: @events
   end
 
@@ -17,6 +17,6 @@ class EventsController < ApplicationController
   end
 
   def event_params 
-    params.require(:event).permit(:eventName, :eventDate, :eventOwner, :eventLocation, :eventDescription)
+    params.require(:event).permit(:eventName, :eventDate, :eventOwner, :eventLocation, :eventDescription, :eventCoverImage)
   end
 end

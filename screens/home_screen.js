@@ -10,6 +10,16 @@ const styles = StyleSheet.create({
   paddedText: {
     padding: 15
   },
+  paddedHeader: {
+    padding: 15,
+    fontWeight: 'bold',
+    fontSize: 20
+  },
+  paddedTitle: {
+    padding: 15,
+    color: '#385898',
+    fontSize: 14
+  },
   container: {
     padding: 50
   },
@@ -54,19 +64,26 @@ const HomeScreen = ({ navigation }) => {
 
   return (
     <ScrollView style={styles.container}>
-      <Text style={styles.paddedText}>Your events!</Text>
       <View style={styles.createEventContainer}>
         <Button
           title={`Create a new event`}
-          containerStyle={styles.createEventContainer}
           onPress={() => navigation.navigate("CreateEvent")}
         />
       </View>
-
+      <Text style={styles.paddedHeader}>Events</Text>
       {events.map(event => {
         return (
           <View>
-            <Text style={styles.paddedText}>Title: {event.eventName}</Text>
+            <Text
+              style={styles.paddedTitle}
+              onPress={() =>
+                navigation.navigate("Event", {
+                  eventId: event.id
+                })
+              }
+            >
+             {event.eventName}
+            </Text>
             <Text style={styles.paddedText}>Date: {event.eventDate}</Text>
             <Text style={styles.paddedText}>Owner: {event.eventOwner}</Text>
             <Text style={styles.paddedText}>
@@ -76,14 +93,6 @@ const HomeScreen = ({ navigation }) => {
               Description: {event.eventDescription}
             </Text>
             <Text style={styles.paddedText}>Other Attendees: </Text>
-            <Button
-              title={`Event number ${event.id}`}
-              onPress={() =>
-                navigation.navigate("Event", {
-                  eventId: event.id
-                })
-              }
-            />
           </View>
         );
       })}
