@@ -39,6 +39,7 @@ const CreateEventScreen = ({ navigation }) => {
   };
 
   const handleSubmit = payload => {
+    debugger
     createEvent(payload)
       .then(response => {
         debugger;
@@ -75,7 +76,6 @@ const CreateEventScreen = ({ navigation }) => {
     console.log(result);
 
     if (!result.cancelled) {
-      debugger
       setEventCoverImage(result.uri);
     }
   };
