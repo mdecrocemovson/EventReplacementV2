@@ -4,6 +4,7 @@ import { createStackNavigator } from "@react-navigation/stack";
 import HomeScreen from "./screens/home_screen";
 import EventScreen from './screens/event_screen';
 import CreateEventScreen from './screens/create_event_screen';
+import EditEventScreen from './screens/edit_event_screen';
 
 const Stack = createStackNavigator();
 
@@ -14,6 +15,7 @@ export default function App() {
         <Stack.Screen name="Home" component={HomeScreen} />
         <Stack.Screen name="Event" component={EventScreen} />
         <Stack.Screen name="CreateEvent" component={CreateEventScreen}/>
+        <Stack.Screen name="EditEvent" component={EditEventScreen}/>
       </Stack.Navigator>
     </NavigationContainer>
   );

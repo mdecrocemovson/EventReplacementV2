@@ -57,24 +57,19 @@ const CreateEventScreen = ({ navigation }) => {
   };
 
   const handleSubmit = payload => {
-    debugger;
     createEvent(payload)
       .then(response => {
-        debugger;
         if (response.ok) {
           return response;
         }
       })
       .then(response => {
-        debugger;
         return response.json();
       })
       .then(body => {
-        debugger;
         navigation.navigate("Event", {
           eventId: body.id
         });
-        debugger;
         console.log("did this get here?");
       })
       .catch(error => {
@@ -98,7 +93,6 @@ const CreateEventScreen = ({ navigation }) => {
     }
   };
   const doesImageExist = eventCoverImage !== null && eventCoverImage !== "";
-  debugger;
   return (
     <ScrollView style={styles.formContainer}>
       <TextInput

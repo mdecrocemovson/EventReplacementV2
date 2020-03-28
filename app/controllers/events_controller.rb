@@ -16,6 +16,12 @@ class EventsController < ApplicationController
     render json: @event
   end
 
+  def update
+    @event = Event.find(params[:id])
+    @event.update_attributes(event_params)
+    render json: @event
+  end
+
   def event_params 
     params.require(:event).permit(:eventName, :eventDate, :eventOwner, :eventLocation, :eventDescription, :eventCoverImage)
   end

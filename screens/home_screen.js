@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import Responses from "../components/responses";
 import RSVP from "../components/rsvp";
 import Posts from "../components/posts";
-import { Platform, StyleSheet, Text, View, ScrollView } from "react-native";
+import { Image, StyleSheet, Text, View, ScrollView } from "react-native";
 import { Button } from "react-native-elements";
 import { fetchAllEvents } from "../components/event_services";
 
@@ -12,16 +12,14 @@ const styles = StyleSheet.create({
   },
   paddedHeader: {
     padding: 15,
-    fontWeight: 'bold',
+    fontWeight: "bold",
     fontSize: 20
   },
   paddedTitle: {
     padding: 15,
-    color: '#385898',
-    fontSize: 14
-  },
-  container: {
-    padding: 50
+    color: "#385898",
+    fontSize: 20,
+    fontWeight: "bold"
   },
   title: {
     fontSize: 30,
@@ -34,6 +32,27 @@ const styles = StyleSheet.create({
   createEventContainer: {
     width: 200,
     padding: 20
+  },
+  image: {
+    height: 200,
+    width: 200
+  },
+  imageContainer: {
+    flex: 1,
+    width: '20%',
+    textAlign: "center",
+    justifyContent: "center",
+    padding: 20
+  },
+  eventContainer: {
+    flex: 1,
+    flexDirection: 'row',
+    paddingBottom: 20
+  },
+  detailsContainer: {
+    flex: 1,
+    flexDirection: 'column',
+    width: '80%'
   }
 });
 
@@ -72,8 +91,16 @@ const HomeScreen = ({ navigation }) => {
       </View>
       <Text style={styles.paddedHeader}>Events</Text>
       {events.map(event => {
+        let convertedDate = new Date(event.eventDate);
         return (
-          <View>
+          <View key={event.id} style={styles.eventContainer}>
+            <View style={styles.imageContainer}>
+              <Image
+              style={styles.image}
+              source={{ uri: event.eventCoverImage }}
+            />
+            </View>
+            <View style={styles.detailsContainer}>
             <Text
               style={styles.paddedTitle}
               onPress={() =>
@@ -82,17 +109,17 @@ const HomeScreen = ({ navigation }) => {
                 })
               }
             >
-             {event.eventName}
+              {event.eventName}
             </Text>
-            <Text style={styles.paddedText}>Date: {event.eventDate}</Text>
-            <Text style={styles.paddedText}>Owner: {event.eventOwner}</Text>
+            <Text style={styles.paddedText}>
+              Date:{" "}
+              {`${convertedDate.getUTCMonth()}/${convertedDate.getUTCDate()}`}
+            </Text>
             <Text style={styles.paddedText}>
               Location: {event.eventLocation}
             </Text>
-            <Text style={styles.paddedText}>
-              Description: {event.eventDescription}
-            </Text>
-            <Text style={styles.paddedText}>Other Attendees: </Text>
+            <Text style={styles.paddedText}>Owner: {event.eventOwner}</Text>
+            </View>
           </View>
         );
       })}

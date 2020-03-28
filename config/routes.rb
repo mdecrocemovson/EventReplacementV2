@@ -1,3 +1,3 @@
 Rails.application.routes.draw do
-  resources :events, only: [:index, :create, :show]
+  resources :events, only: [:index, :create, :show, :update]
 end
